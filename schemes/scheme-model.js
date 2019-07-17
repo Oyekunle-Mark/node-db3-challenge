@@ -34,10 +34,25 @@ const update = (changes, id) =>
     .update(changes)
     .then(() => findById(id));
 
+const remove = async id => {
+  const item = findById(id);
+
+  if (item) {
+    await db('schemes')
+      .where({ id })
+      .del();
+
+    return item;
+  }
+
+  return null;
+};
+
 module.exports = {
   find,
   findById,
   findSteps,
   add,
   update,
+  remove,
 };
