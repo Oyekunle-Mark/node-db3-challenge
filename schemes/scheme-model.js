@@ -48,6 +48,8 @@ const remove = async id => {
   return null;
 };
 
+const addStep = (step, id) => db('steps').insert({ ...step, scheme_id: id });
+
 module.exports = {
   find,
   findById,
@@ -55,4 +57,5 @@ module.exports = {
   add,
   update,
   remove,
+  addStep,
 };
