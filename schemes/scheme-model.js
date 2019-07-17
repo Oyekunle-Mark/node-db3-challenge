@@ -22,8 +22,15 @@ const findSteps = id =>
     .where({ ['sc.id']: id })
     .orderBy('s.step_number', 'asc');
 
+const add = async scheme => {
+  const [id] = await db('schemes').insert(scheme);
+
+  return findById(id);
+};
+
 module.exports = {
   find,
   findById,
   findSteps,
+  add,
 };
