@@ -28,9 +28,16 @@ const add = async scheme => {
   return findById(id);
 };
 
+const update = (changes, id) =>
+  db('schemes')
+    .where({ id })
+    .update(changes)
+    .then(() => findById(id));
+
 module.exports = {
   find,
   findById,
   findSteps,
   add,
+  update,
 };
